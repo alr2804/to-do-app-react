@@ -1,0 +1,27 @@
+.Task {
+    background-color: rgb(128, 253, 253);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+    margin: 10px;
+    list-style-type: none;
+    
+
+}
+
+.Check {
+    color: green;
+    position: absolute;
+    left: 25px;
+
+}
+
+.Delete {
+    color: red;
+    position: absolute;
+    right: 25px;
+}
+

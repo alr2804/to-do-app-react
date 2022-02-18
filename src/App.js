@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { ToDoCounter } from './Counter';
+import { ToDoCounter } from './ToDoCounter';
 import { ToDoSearch } from './ToDoSearch';
 import { TaskList } from './TaskList';
 import { Task } from './Task';
@@ -10,6 +10,8 @@ const tasks = [
   {text: "Crear app", completed: false},
   {text: "Crear 1", completed: false},
   {text: "Crear 2", completed: false},
+  {text: "Tarea 3", completed: false},
+  {text: "Tareas", completed: false},
   
 ]
 

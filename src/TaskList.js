@@ -1,10 +1,13 @@
 import React from "react";
+import "./TaskList.css"
 
 function TaskList(props) {
     return(
-        <ul>
-            {props.children}
-        </ul>
+        <div className="TaskList">
+            <ul>
+                {props.children}
+            </ul>
+        </div>
     );
 }
 export {TaskList};
