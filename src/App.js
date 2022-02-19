@@ -7,9 +7,9 @@ import { Task } from './Task';
 import { AddButton } from './AddButton';
 
 const tasks = [
-  {text: "Crear app", completed: false},
+  {text: "Crear app", completed: true},
   {text: "Crear 1", completed: false},
-  {text: "Crear 2", completed: false},
+  {text: "Crear 2", completed: true},
   {text: "Tarea 3", completed: false},
   {text: "Tareas", completed: false},
   
@@ -24,7 +24,10 @@ function App(props) {
       
       <TaskList>
         {tasks.map( task => (
-          <Task key={task.text} text={task.text}></Task>
+          <Task 
+          key={task.text}
+          text={task.text}
+          completed={task.completed}></Task>
         ))}
       </TaskList>
       <AddButton/>
