@@ -6,7 +6,7 @@ import { TaskList } from './TaskList';
 import { Task } from './Task';
 import { AddButton } from './AddButton';
 
-const tasks = [
+const allTasks = [
   {text: "Crear app", completed: true},
   {text: "Crear 1", completed: false},
   {text: "Crear 2", completed: true},
@@ -17,13 +17,27 @@ const tasks = [
 
 
 function App(props) {
+
+  const [tasks, setTasks] = React.useState("");
+
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const completedTasks = allTasks.filter( task => task.completed ).length;
+  const totalTasks = allTasks.length;
+
   return (
     <React.Fragment>
-      <ToDoCounter/>
-      <ToDoSearch/>
+      <ToDoCounter
+        completed={completedTasks}
+        total={totalTasks}      
+      />
+      <ToDoSearch
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}      
+      />
       
       <TaskList>
-        {tasks.map( task => (
+        {allTasks.map( task => (
           <Task 
           key={task.text}
           text={task.text}
