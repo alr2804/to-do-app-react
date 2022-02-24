@@ -18,12 +18,27 @@ const allTasks = [
 
 function App(props) {
 
+  //States
   const [tasks, setTasks] = React.useState("");
-
   const [searchValue, setSearchValue] = React.useState("");
 
+  //Variables
   const completedTasks = allTasks.filter( task => task.completed ).length;
   const totalTasks = allTasks.length;
+  let searchedTasks = [];
+
+
+  //Filter
+  if (!searchValue.length >=1 ){
+    searchedTasks = allTasks;
+  } else {
+    searchedTasks = allTasks.filter( task => {
+      const taskText = task.text.toLowerCase();
+      const searchText = searchValue.toLocaleLowerCase();
+      return taskText.includes(searchText);
+    })
+  }
+
 
   return (
     <React.Fragment>
@@ -37,7 +52,7 @@ function App(props) {
       />
       
       <TaskList>
-        {allTasks.map( task => (
+        {searchedTasks.map( task => (
           <Task 
           key={task.text}
           text={task.text}
