@@ -19,25 +19,52 @@ const allTasks = [
 function App(props) {
 
   //States
-  const [tasks, setTasks] = React.useState("");
+  const [tasks, setTasks] = React.useState(allTasks);
   const [searchValue, setSearchValue] = React.useState("");
 
   //Variables
-  const completedTasks = allTasks.filter( task => task.completed ).length;
-  const totalTasks = allTasks.length;
+  const completedTasks = tasks.filter( task => task.completed ).length;
+  const totalTasks = tasks.length;
   let searchedTasks = [];
 
 
   //Filter
   if (!searchValue.length >=1 ){
-    searchedTasks = allTasks;
+    searchedTasks = tasks;
   } else {
-    searchedTasks = allTasks.filter( task => {
+    searchedTasks = tasks.filter( task => {
       const taskText = task.text.toLowerCase();
       const searchText = searchValue.toLocaleLowerCase();
       return taskText.includes(searchText);
     })
   }
+
+  //Toggle tasks
+  const toggleTasks = (text) => {
+
+    const taskIndex = tasks.findIndex( task => task.text === text);
+    const newTasks = [...tasks];
+
+    if (!newTasks[taskIndex].completed) {
+      newTasks[taskIndex].completed = true;
+
+    }else {
+      newTasks[taskIndex].completed = false;
+    }
+
+    setTasks(newTasks);
+
+  };
+
+  //Delete task 
+  const deleteTask = (text) => {
+    const taskIndex = tasks.findIndex( task => task.text === text);
+    const newTasks = [...tasks];
+
+    newTasks.splice(taskIndex, 1);
+    setTasks(newTasks);
+  };
+
 
 
   return (
@@ -56,7 +83,10 @@ function App(props) {
           <Task 
           key={task.text}
           text={task.text}
-          completed={task.completed}></Task>
+          completed={task.completed}
+          onToggle = { ()=>{ toggleTasks(task.text)}}
+          onDelete = { ()=>{ deleteTask(task.text)}}
+          ></Task>
         ))}
       </TaskList>
       <AddButton/>

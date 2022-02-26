@@ -3,21 +3,14 @@ import "./Task.css"
 
 function Task(props) {
 
-    const onComplete = () => {
-        console.log("Task completed:" + props.text);
-    };
-
-    const onDelete = () => {
-        console.log("Task deleted:" + props.text);
-    };
-
+    
 
 
     return (
-        <li className="Task ">
+        <li className="Task">
             <span 
             className={`Check Icon ${props.completed && 'Check--active'}`}
-            onClick={onComplete}
+            onClick={props.onToggle}
             > ✔ </span>
 
             <p className={`${props.completed && "Task--completed"}`}>{props.text}</p>
@@ -25,7 +18,7 @@ function Task(props) {
 
             <span 
             className="Delete Icon"
-            onClick={onDelete}
+            onClick={props.onDelete}
             > ✖ </span>
             
         </li>   
