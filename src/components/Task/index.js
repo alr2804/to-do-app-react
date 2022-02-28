@@ -2,10 +2,7 @@ import React from "react";
 import "./Task.css"
 
 function Task(props) {
-
     
-
-
     return (
         <li className="Task">
             <span 

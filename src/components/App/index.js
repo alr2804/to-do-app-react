@@ -1,10 +1,10 @@
 import './App.css';
 import React from 'react';
-import { ToDoCounter } from './ToDoCounter';
-import { ToDoSearch } from './ToDoSearch';
-import { TaskList } from './TaskList';
-import { Task } from './Task';
-import { AddButton } from './AddButton';
+import { ToDoCounter } from '../ToDoCounter/index.js';
+import { ToDoSearch } from '../ToDoSearch/index.js';
+import { TaskList } from '../TaskList/index.js';
+import { Task } from '../Task/index.js';
+import { AddButton } from '../AddButton/index.js';
 
 const allTasks = [
   {text: "Crear app", completed: true},
