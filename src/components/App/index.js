@@ -1,10 +1,6 @@
 import './App.css';
 import React from 'react';
-import { ToDoCounter } from '../ToDoCounter/index.js';
-import { ToDoSearch } from '../ToDoSearch/index.js';
-import { TaskList } from '../TaskList/index.js';
-import { Task } from '../Task/index.js';
-import { AddButton } from '../AddButton/index.js';
+import { AppUI } from './AppUI';
 
 const allTasks = [
   {text: "Crear app", completed: true},
@@ -16,7 +12,7 @@ const allTasks = [
 ]
 
 
-function App(props) {
+function App() {
 
   //States
   const [tasks, setTasks] = React.useState(allTasks);
@@ -66,32 +62,18 @@ function App(props) {
   };
 
 
-
   return (
-    <React.Fragment>
-      <ToDoCounter
-        completed={completedTasks}
-        total={totalTasks}      
-      />
-      <ToDoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}      
-      />
-      
-      <TaskList>
-        {searchedTasks.map( task => (
-          <Task 
-          key={task.text}
-          text={task.text}
-          completed={task.completed}
-          onToggle = { ()=>{ toggleTasks(task.text)}}
-          onDelete = { ()=>{ deleteTask(task.text)}}
-          ></Task>
-        ))}
-      </TaskList>
-      <AddButton/>
-      
-    </React.Fragment>
+    <AppUI
+      completedTasks={completedTasks}
+      totalTasks={totalTasks}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      toggleTasks={toggleTasks}
+      deleteTask={deleteTask}
+      searchedTasks={searchedTasks}
+
+
+    />
   );
 }
 
